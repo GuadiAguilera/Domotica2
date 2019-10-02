@@ -1,10 +1,10 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-//const char* ssid = "Maestros";//escribe tu SSID
-//const char* password = "docentes_2018";//escribe tu password
-const char* ssid = "WiFi Aguilera";//escribe tu SSID
-const char* password = "0142035152";//escribe tu password
+const char* ssid = "Maestros";//escribe tu SSID
+const char* password = "docentes_2018";//escribe tu password
+//const char* ssid = "WiFi Aguilera";//escribe tu SSID
+//const char* password = "0142035152";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
 const char* mqtt_server = "test-mosquitto.org"; /// MQTT Broker
@@ -41,7 +41,6 @@ void setup() {
 
 
   // Conectamos a el WiFi
-  Serial.println();
   Serial.println();
   Serial.print("Conectando a: ");
   Serial.println(ssid);
@@ -134,13 +133,13 @@ void ZC_detect() {
 
 void loop()
  {
- /* clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/#");
-if (!client.connected())  // Reconnect if connection is lost
+  //clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/#");
+/*if (!clienteMQTT.connected())  // Reconnect if connection is lost
   {
     reconnect();
   }
-  client.loop();  
-
+  clienteMQTT.loop();  
+*/
     if (digitalRead(TouchSensor) == HIGH) //lectura de señal del sensor
   {
     delay(150);
@@ -150,17 +149,17 @@ if (!client.connected())  // Reconnect if connection is lost
         {
           EstadoLuz = LOW;
           digitalWrite(Lampara, LOW);   // si la lectura esta en alto el led se enciende
-          client.publish("Casa/Habitaciones/Habitacion1/Sensor/", "OFF");
+          clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/", "OFF");
           Serial.println("OFF");
-          //client.print("Apagado");
+          clienteMQTT.print("Apagado");
         }//ESTADO LUZ
         else
         {
           EstadoLuz = HIGH;
           digitalWrite(Lampara, HIGH);    // si no existe lectura el ed se apaga o no enciende
-          client.publish("Casa/Habitaciones/Habitacion1/Sensor/", "ON");
+          clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/", "ON");
           Serial.println("ON");
-          //client.print("Encendido");
+          clienteMQTT.print("Encendido");
         } //ELSE
       }
   } // if sensor
@@ -170,7 +169,6 @@ if (!client.connected())  // Reconnect if connection is lost
     //client.flush();
     clienteMQTT.loop();
  // }
- */
 
   // Checamos si coincide la solicitud
 
