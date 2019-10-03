@@ -1,13 +1,15 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Maestros";//escribe tu SSID
-const char* password = "docentes_2018";//escribe tu password
+//const char* ssid = "Maestros";//escribe tu SSID
+//const char* password = "docentes_2018";//escribe tu password
 //const char* ssid = "WiFi Aguilera";//escribe tu SSID
 //const char* password = "0142035152";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
-const char* mqtt_server = "test-mosquitto.org"; /// MQTT Broker
+const char* ssid = "Estudiantes";//escribe tu SSID
+const char* password = "educar_2018";//escribe tu password
+const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
 int mqtt_port = 1883;
 
 int Lampara = 16; // Lampara rele...pin DO
@@ -150,16 +152,14 @@ void loop()
           EstadoLuz = LOW;
           digitalWrite(Lampara, LOW);   // si la lectura esta en alto el led se enciende
           clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/", "OFF");
-          Serial.println("OFF");
-          clienteMQTT.print("Apagado");
+          Serial.println("Rele Apagado");
         }//ESTADO LUZ
         else
         {
           EstadoLuz = HIGH;
           digitalWrite(Lampara, HIGH);    // si no existe lectura el ed se apaga o no enciende
           clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/", "ON");
-          Serial.println("ON");
-          clienteMQTT.print("Encendido");
+          Serial.println("Rele Encendido");
         } //ELSE
       }
   } // if sensor

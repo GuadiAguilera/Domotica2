@@ -5,6 +5,7 @@ const char* ssid = "Estudiantes";//escribe tu SSID
 const char* password = "educar_2018";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
+const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
 
 int EstadoLuz = 0;
 int Lampara = ; // Usaremos el pin GPIO2 de el ESP8266/DO
