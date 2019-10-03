@@ -99,7 +99,7 @@ String nluz = "";
 }// void mensajeRecibido
 
 void loop() {
-  
+      clienteMQTT.loop();
 }
 
 String splitString (String Data, char Separator, int index){

@@ -135,13 +135,6 @@ void ZC_detect() {
 
 void loop()
  {
-  //clienteMQTT.publish("Casa/Habitaciones/Habitacion1/Sensor/#");
-/*if (!clienteMQTT.connected())  // Reconnect if connection is lost
-  {
-    reconnect();
-  }
-  clienteMQTT.loop();  
-*/
     if (digitalRead(TouchSensor) == HIGH) //lectura de señal del sensor
   {
     delay(150);
@@ -165,8 +158,7 @@ void loop()
   } // if sensor
     //delay(1);
     //Serial.println("Cliente desconectado");
-    //Serial.println("");
-    //client.flush();
+    clienteMQTT.flush();
     clienteMQTT.loop();
  // }
 
