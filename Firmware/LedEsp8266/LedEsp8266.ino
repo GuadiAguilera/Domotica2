@@ -80,9 +80,12 @@ String nluz = "";
  Serial.print("Message arrived [");
  Serial.print(topic);
  Serial.print("] ");
+ //Serial.print(" ");
  for (int i = 0; i < length; i++) {
+  Serial.print(" ");
   Serial.print((char)payload[i]);
   spayload += (char)payload[i]; // spayload = spayload + 
+  
  }
  /* for (int i = 0; i < length; i++) {
   Serial.print(topic[i]);
@@ -92,6 +95,7 @@ String nluz = "";
  nluz= splitString (String(topic),'/',3);
  Serial.print("Luz:");
  Serial.println(nluz);
+ Serial.println();
  Serial.print("spayload: ");
  Serial.println(spayload);
  
