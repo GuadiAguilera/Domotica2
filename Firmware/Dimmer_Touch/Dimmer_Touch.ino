@@ -32,9 +32,9 @@ char msg[50];
 void setup() {
   Serial.begin(115200); //Inicializamos la comunicacion con el modulo
   delay(10);
-  pinMode(Lampara, OUTPUT); //Definimos el pin GPI02 como salida
-  digitalWrite(Lampara, LOW); //Iniciamos con el led Apagado
-  pinMode(TouchSensor, INPUT);
+  pinMode(Lampara, OUTPUT); //Definimos el pin D0 como salida
+  digitalWrite(Lampara, LOW); //Iniciamos con la lampara Apagada
+  pinMode(TouchSensor, INPUT); 
   pinMode(zc_pin,INPUT_PULLUP); 
   pinMode(triac_gate, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(zc_pin),ZC_detect,FALLING);

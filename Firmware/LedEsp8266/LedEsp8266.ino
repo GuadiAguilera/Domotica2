@@ -1,10 +1,12 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Estudiantes";//escribe tu SSID
-const char* password = "educar_2018";//escribe tu password
+//const char* ssid = "Estudiantes";//escribe tu SSID
+//const char* password = "educar_2018";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
+const char* ssid = "AndroidAP";//escribe tu SSID
+const char* password = "ranqueles";//escribe tu password
 const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
 
 int EstadoLuz = 0;
@@ -19,8 +21,8 @@ char msg[50];
 void setup() {
   Serial.begin(115200); //Inicializamos la comunicacion con el modulo
   delay(10);
-  pinMode(Lampara, OUTPUT); //Definimos el pin GPI02 como salida
-  digitalWrite(Lampara, LOW); //Iniciamos con el led Apagado
+  pinMode(Lampara, OUTPUT); //Definimos el pin GPIO0 como salida
+  digitalWrite(Lampara, LOW); //Iniciamos con el la lampara Apagada
 
   // Conectamos a el WiFi
   Serial.println();
@@ -64,7 +66,7 @@ void setup() {
       delay(5000);
     }
   }
-}
+} //void setup
 void mensajeRecibido(char* topic, byte* payload, unsigned int length) {
 String spayload = "";
 String stopic = "";
@@ -76,12 +78,14 @@ String nluz = "";
   Serial.print((char)payload[i]);
   spayload += (char)payload[i]; // spayload = spayload + 
  }
-  for (int i = 0; i < length; i++) {
+ /* for (int i = 0; i < length; i++) {
   Serial.print(topic[i]);
   stopic += (topic[i]); // spayload = spayload +
   nluz = splitString (stopic,'/',3);
- }
- Serial.println();
+ }*/
+ nluz= splitString (String(topic),'/',3);
+ Serial.print("Luz:");
+ Serial.println(nluz);
  Serial.print("spayload: ");
  Serial.println(spayload);
  
