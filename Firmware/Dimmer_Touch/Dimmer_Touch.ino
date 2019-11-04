@@ -28,7 +28,6 @@ PubSubClient clienteMQTT(espClient);
 long lastMsg = 0;
 char msg[50];
 
-
 void setup() {
   Serial.begin(115200); //Inicializamos la comunicacion con el modulo
   delay(10);
@@ -87,6 +86,7 @@ void setup() {
     }
   }
 } //void setup
+
 void mensajeRecibido(char* topic, byte* payload, unsigned int length) {
 String spayload = "";
 String stopic = "";

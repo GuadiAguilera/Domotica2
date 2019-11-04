@@ -1,13 +1,16 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
+const char* ssid = "WiFi Aguilera";//escribe tu SSID
+const char* password = "0142035152";//escribe tu password
 //const char* ssid = "Estudiantes";//escribe tu SSID
 //const char* password = "educar_2018";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
-const char* ssid = "AndroidAP";//escribe tu SSID
-const char* password = "ranqueles";//escribe tu password
+//const char* ssid = "AndroidAP";//escribe tu SSID
+//const char* password = "ranqueles";//escribe tu password
 const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
+int mqtt_port = 1883;
 
 int EstadoLuz = 0;
 int Lampara = 0; // Usaremos el pin GPIO0 de el ESP8266/DO
@@ -25,7 +28,6 @@ void setup() {
   digitalWrite(Lampara, LOW); //Iniciamos con el la lampara Apagada
 
   // Conectamos a el WiFi
-  Serial.println();
   Serial.println();
   Serial.print("Conectando a: ");
   Serial.println(ssid);
@@ -49,6 +51,9 @@ void setup() {
   Serial.print(WiFi.localIP());
   Serial.println("/");
 
+  clienteMQTT.setServer(mqtt_server, mqtt_port);
+  clienteMQTT.setCallback(mensajeRecibido);
+
    while(!clienteMQTT.connected()){
     if (clienteMQTT.connect("ModuloLampara02")){
       Serial.println("Connected ");
@@ -67,6 +72,7 @@ void setup() {
     }
   }
 } //void setup
+
 void mensajeRecibido(char* topic, byte* payload, unsigned int length) {
 String spayload = "";
 String stopic = "";
