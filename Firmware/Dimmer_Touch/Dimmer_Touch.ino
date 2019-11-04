@@ -7,8 +7,8 @@
 //const char* password = "0142035152";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
-const char* ssid = "Estudiantes";//escribe tu SSID
-const char* password = "educar_2018";//escribe tu password
+const char* ssid = "AndroidAP";//escribe tu SSID
+const char* password = "ranqueles";//escribe tu password
 const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
 int mqtt_port = 1883;
 
@@ -97,14 +97,15 @@ String nluz = "";
  for (int i = 0; i < length; i++) {
   Serial.print((char)payload[i]);
   spayload += (char)payload[i]; // spayload = spayload +
-
  }
- for (int i = 0; i < length; i++) {
+ /*for (int i = 0; i < length; i++) {
   Serial.print(topic[i]);
-  stopic += (topic[i]); // spayload = spayload +
+  stopic = (topic[i]); // spayload = spayload +
   nluz = splitString (stopic,'/',3);
- }
-
+ }*/
+  nluz = splitString (String(topic),'/',3);
+  Serial.print("Luz: ");
+  Serial.println(nluz); 
   Serial.println();
   Serial.print("spayload: ");
   Serial.println(spayload);

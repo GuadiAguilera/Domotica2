@@ -8,7 +8,7 @@ const char* password = "educar_2018";//escribe tu password
 const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
 
 int EstadoLuz = 0;
-int Lampara = ; // Usaremos el pin GPIO2 de el ESP8266/DO
+int Lampara = 0; // Usaremos el pin GPIO0 de el ESP8266/DO
 WiFiServer server(80);
 
 WiFiClient espClient;
@@ -48,7 +48,7 @@ void setup() {
   Serial.println("/");
 
    while(!clienteMQTT.connected()){
-    if (clienteMQTT.connect("ModuloLampara01")){
+    if (clienteMQTT.connect("ModuloLampara02")){
       Serial.println("Connected ");
       Serial.print("MQTT Server ");
       Serial.print(mqtt_server);
@@ -56,7 +56,7 @@ void setup() {
       Serial.println(String(mqtt_port)); 
       Serial.print("ESP8266 IP ");
       Serial.println(WiFi.localIP()); 
-      clienteMQTT.subscribe("Casa/Habitaciones/Cocina/Luz1");
+      clienteMQTT.subscribe("Casa/Habitaciones/Cocina/#");
     }else{
       Serial.print("Falla en la conexion codigo: ");
       Serial.print(clienteMQTT.state());
