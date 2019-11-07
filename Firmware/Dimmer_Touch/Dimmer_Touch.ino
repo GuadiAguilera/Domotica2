@@ -1,14 +1,16 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-//const char* ssid = "Maestros";//escribe tu SSID
-//const char* password = "docentes_2018";//escribe tu password
-const char* ssid = "WiFi Aguilera";//escribe tu SSID
-const char* password = "0142035152";//escribe tu password
+const char* ssid = "Guadi";//escribe tu SSID
+const char* password = "13072000Guadi";//escribe tu password
+//const char* ssid = "WiFi Aguilera";//escribe tu SSID
+//const char* password = "0142035152";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
 //const char* ssid = "AndroidAP";//escribe tu SSID
 //const char* password = "ranqueles";//escribe tu password
+//const char* ssid = "Estudiantes";//escribe tu SSID
+//const char* password = "educar_2018";//escribe tu password
 const char* mqtt_server = "test.mosquitto.org"; /// MQTT Broker
 int mqtt_port = 1883;
 

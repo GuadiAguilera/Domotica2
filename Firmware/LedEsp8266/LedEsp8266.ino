@@ -1,10 +1,10 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "WiFi Aguilera";//escribe tu SSID
-const char* password = "0142035152";//escribe tu password
-//const char* ssid = "Estudiantes";//escribe tu SSID
-//const char* password = "educar_2018";//escribe tu password
+//const char* ssid = "WiFi Aguilera";//escribe tu SSID
+//const char* password = "0142035152";//escribe tu password
+const char* ssid = "Guadi";//escribe tu SSID
+const char* password = "13072000Guadi";//escribe tu password
 //const char* ssid = "LabElectro-2";//escribe tu SSID
 //const char* password = "njLHwHh43";//escribe tu password
 //const char* ssid = "AndroidAP";//escribe tu SSID
@@ -80,10 +80,9 @@ String nluz = "";
  Serial.print("Message arrived [");
  Serial.print(topic);
  Serial.print("] ");
- //Serial.print(" ");
  for (int i = 0; i < length; i++) {
-  Serial.print(" ");
   Serial.print((char)payload[i]);
+  Serial.println();
   spayload += (char)payload[i]; // spayload = spayload + 
   
  }
